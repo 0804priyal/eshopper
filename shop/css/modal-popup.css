@@ -1,0 +1,196 @@
+/*Contact us modal popup CSS */
+
+.form-check-input {
+    position: relative !important;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
+}
+.contact-us-modal .modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-us-modal div {
+  margin-bottom: 25px;
+}
+
+.contact-btn {
+  text-align: center;
+}
+
+.form-control {
+  padding: 10px 0rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-bottom: 1px solid #ced4da;
+  border-top: 0px solid #ced4da;
+  border-left: 0px solid #ced4da;
+  border-right: 0px solid #ced4da;
+  border-radius: 0rem;
+}
+
+.contact-us-modal .btn-bgcolor1 .btn {
+  border-radius: 3px;
+  background-image: -webkit-gradient(linear, left top, right top, from(white));
+  background-image: linear-gradient(90deg, white);
+  background-color: transparent;
+  color: #0eb3d0;
+  text-transform: uppercase;
+  padding: 9px 45px;
+  border-radius: 5px;
+  border-color: #0d6efd;
+  border: 1px solid #0eb3d0;
+  font-weight: bold;
+}
+
+.contact-us-modal .btn-bgcolor2 .btn {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(1%, #006ef3), to(#0eb3d0));
+  background-image: linear-gradient(90deg, #006ef3 1%, #0eb3d0);
+  background-color: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 45px;
+  border-radius: 5px;
+  font-weight: bold;
+  border-color: #0d6efd;
+  border: 0px solid transparent;
+}
+
+#myModalSignUp .modal-dialog, #myModalContact .modal-dialog {
+  max-width: 400px;
+  margin: 1.75rem auto;
+}
+
+.modal-body {
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 25px;
+}
+
+#myModalSignIn .modal-dialog {
+  min-width: 80%;
+  margin: 1.75rem auto;
+}
+
+#myModalSignIn .bg-black {
+  background-color: black;
+  color: white;
+}
+
+#myModalSignIn .bg-white {
+  background-color: white;
+  color: black;
+  padding: 50px 50px;
+}
+
+#myModalSignIn .padding-50 {
+  padding: 25px 0px;
+}
+
+#myModalSignIn .close-btn {
+  font-size: 25px;
+  font-weight: normal;
+  text-align: left;
+  padding: .25em 0px;
+  margin: 0px;
+  color: white;
+  border: 0;
+  border-radius: .25rem;
+  opacity: .5;
+  display: inline-block;
+  background-color: black;
+}
+
+#myModalSignIn .modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem 0rem;
+  border-bottom: 0px solid #dee2e6;
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+
+#myModalSignIn .modal-content {
+  background-color: transparent;
+  border: 0px solid rgba(0, 0, 0, 0.2);
+}
+
+#myModalSignIn .signin-body {
+  text-align: center;
+  margin: 50px 0px 0px 0px;
+}
+
+#myModalSignIn .signin-body img {
+  width: 200px;
+  height: auto;
+}
+
+#myModalSignIn .signin-body .btn {
+  border: 1px solid #0eb2d0;
+  color: #0eb2d0;
+  background-color: rgba(216, 216, 216, 0);
+  padding: 15px 35px;
+  font-size: 18px;
+}
+
+#myModalSignIn .signin-body .margin-50pxt {
+  margin-top: 20px;
+}
+
+#myModalSignIn .signin-body .margin-100pxt {
+  margin-top: 55px;
+}
+
+#myModalSignIn .contact-us-modal div {
+  margin-bottom: 0px;
+}
+
+#myModalSignIn .contact-us-modal .signin-btn div {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+#myModalSignIn .forgot-pswd {
+  color: #0eb2d0;
+  text-align: right;
+}
+
+#myModalSignIn .signin-btn .btn-bgcolor2 .btn {
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(1%, #006ef3), to(#0eb3d0));
+  background-image: linear-gradient(90deg, #006ef3 1%, #0eb3d0);
+  background-color: transparent;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 75px;
+  border-radius: 5px;
+  font-weight: bold;
+  border-color: #0d6efd;
+  border: 0px solid transparent;
+  text-align: center;
+}
+
+#myModalSignIn .fa-eye {
+  position: relative;
+  text-align: right;
+  width: auto;
+  float: right;
+  margin-top: -22px;
+  padding-right: 8px;
+}
+/*# sourceMappingURL=modal-popup.css.map */
