@@ -17,7 +17,7 @@ $emailQuery = mysqli_query($conn, $checkEmailQuery);
 		echo "Your account is confirm";
 	}
 	else {
-		echo "Token is expired";
+		echo "Token is expired please";
 		//echo "Recored added failed";
 	}	
 
