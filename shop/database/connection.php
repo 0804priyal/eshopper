@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect('localhost', 'root' ,'', 'shop');
+$conn = mysqli_connect('localhost', 'root' ,'', 'eshopper_prod');
 
 
 ?>

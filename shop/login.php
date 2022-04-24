@@ -1,5 +1,6 @@
-<?php 
-    include("header.php");
+<?php    
+    include("header_login.php");
+    
 ?>
         </div>
       </div>
@@ -15,6 +16,13 @@
                             if(isset($_GET['x']) && $_GET['x']==1) {
                           ?>
                           <h6 style="color:green">Your Registration is Successful: Now Login</h6>
+                          <?php    
+                            }
+                          ?>
+                          <?php
+                            if(isset($_GET['product_id']) && $_GET['product_id']==0) {
+                          ?>
+                          <h6 style="color:green">Please login before <b>Add to Card</b></h6>
                           <?php    
                             }
                           ?>

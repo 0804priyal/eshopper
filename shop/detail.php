@@ -1,12 +1,8 @@
 <?php 
 	include("header.php");
+    include("database/connection.php");
 ?>
-<?php
-include("database/connection.php");
-$product_id=$_GET['id'];
-$sql = "SELECT * from products WHERE product_id = $product_id";
-$result = $conn->query($sql);
-?>
+
 		</div>
       </div>
     </div>
@@ -33,6 +29,11 @@ $result = $conn->query($sql);
                     <div class="carousel-inner border">
 
                         <?php
+                        if(isset($_GET['id'])) {
+                            $product_id=$_GET['id'];
+                            $sql = "SELECT * from products WHERE product_id = $product_id";
+                            $result = $conn->query($sql);
+                            
                           if($result->num_rows>0) {
                             $i=0;
                             while ($row=$result->fetch_assoc()) {
@@ -52,6 +53,7 @@ $result = $conn->query($sql);
                         <?php
                             $i=$i+1;
                             }
+                        }
                             }            
                         ?>
                         
@@ -247,14 +249,34 @@ $result = $conn->query($sql);
         <div class="row px-xl-5">
             <div class="col">
                 <div class="owl-carousel related-carousel">
+
+
+
+                    <?php
+                    if(isset($_GET['cat_id'])) {
+                        $cat_id=$_GET['cat_id'];
+                        $sql2 = "SELECT * from products WHERE cat_id = $cat_id";
+                        $result2 = $conn->query($sql2);
+                        if($result2->num_rows>0) {
+                        while ($row=$result2->fetch_assoc()) {
+                        $productname = $row['productname'];
+                        $productimg = $row['productimg'];
+                        $shortdescription = $row['shortdescription'];
+                        $size = $row['size'];
+                        $color = $row['color'];
+                        $productprice = $row['productprice'];
+                        $offerprice = $row['offerprice'];
+                        $fulldescription = $row['fulldescription'];
+                        $information = $row['information'];
+                    ?>
                     <div class="card product-item border-0">
                         <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                            <img class="img-fluid w-100" src="../admin/bannerimg/<?php echo $productimg; ?>" alt="">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
+                            <h6 class="text-truncate mb-3"><?PHP echo $productname; ?></h6>
                             <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                <h6>$<?PHP echo $offerprice; ?>.00</h6><h6 class="text-muted ml-2"><del>$<?PHP echo $productprice; ?>.00</del></h6>
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
@@ -262,66 +284,12 @@ $result = $conn->query($sql);
                             <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                         </div>
                     </div>
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                        </div>
-                    </div>
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                        </div>
-                    </div>
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                        </div>
-                    </div>
-                    <div class="card product-item border-0">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
-                        </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                            <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                            <div class="d-flex justify-content-center">
-                                <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                        </div>
-                    </div>
+                    <?PHP 
+                        }
+                      }
+                      }  
+                    ?>
+                    
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 include("database/connection.php");
-$sql = "SELECT * from products WHERE collection_type = 1";
+$sql = "SELECT * from products WHERE collection_type = 1 LIMIT 0,20";
 $result = $conn->query($sql);
 ?>
 <!-- Products Start -->
@@ -13,6 +13,7 @@ $result = $conn->query($sql);
                 if($result->num_rows>0) {
                 //$i=0;
                 while ($row=$result->fetch_assoc()) {
+                $product_id = $row['product_id'];
                 $productimg = $row['productimg'];
                 $productname = $row['productname'];
                 $productprice = $row['productprice'];
@@ -30,8 +31,8 @@ $result = $conn->query($sql);
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                        <a href="detail.php?id=<?php echo $product_id; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                        <a href="database/insert_add_card.php?product_id=<?php echo $product_id; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                     </div>
                 </div>
             </div>
