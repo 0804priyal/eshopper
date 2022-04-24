@@ -127,7 +127,7 @@ if($result->num_rows>0) {
         var page = document.getElementById("page").value;   
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
         window.location.href = 'index1.php?page='+page;   
-    }   
+    }
   </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -138,9 +138,34 @@ if($result->num_rows>0) {
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
-
+    <script src="js/jquery.dynaprice.min.js"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script type="text/javascript"> 
+    jQuery(document).ready(function(){
+      jQuery('.oncheck').change(function(){
+       var fromValue = jQuery(this).attr('from');
+       var endValue = jQuery(this).attr('end');
+       var colorValue = jQuery(this).attr('color');
+       $.ajax({
+            type: "POST",
+            url: 'category_filter.php',
+            data: {from:fromValue,end:endValue,color:colorValue},
+            success: function(response)
+            {
+               jQuery('.shop-filter').html(response);
+           }
+       });
+      });
+    });   
+    /* Calculation for card page */
+    $(function(){
+            $('input#basic').dynaprice({
+                destination: $('span#basicPrice')
+            });
+            
+        });
+</script>
 </body>
 
 </html>

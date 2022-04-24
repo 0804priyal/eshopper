@@ -1,28 +1,15 @@
 <?php 
-include("../main_pages/header.php");
-include("../main_pages/left_sidebar.php");
-
+	include("header.php");
 ?>
-      
+		</div>
+      </div>
+    </div>
+    <!-- Navbar End -->
 
-      <!-- Right side column. Contains the navbar and content of the page -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Dashboard
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-          <div class="row paddin-25px">
-			<div class="col-md-12">
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+                <div class="col-md-12">
                 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
                 <div class="container">
                    <div class="row">
@@ -197,9 +184,11 @@ include("../main_pages/left_sidebar.php");
                    </div>
                 </div>
             </div>
-          </div>
-		</section>
+        </div>
     </div>
-<?php 
-include("../main_pages/footer.php");
-?>      
+    <!-- Subscribe End -->
+   
+
+<?php
+	include("footer.php");
+?>

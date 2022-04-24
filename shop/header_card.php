@@ -1,5 +1,10 @@
 <?php
 session_start();
+// echo $_SESSION['id'];
+// exit();
+if(empty($_SESSION['id'])) {
+    header("location: login.php?product_id=0");
+}
 include("database/connection.php");
 $sql = "Select * from dresses ORDER BY dress_id DESC";
 $result = $conn->query($sql);
@@ -219,7 +224,7 @@ $result = $conn->query($sql);
                             if(!empty($_SESSION['id'])) {
                         ?>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="#" class="nav-item nav-link">Welcom <span style="color: green;"><?php echo $_SESSION['firstname']; ?></span></a>
+                            <a href="login.php" class="nav-item nav-link">Welcom <span style="color: green;"><?php echo $_SESSION['firstname']; ?></span></a>
                             <a href="profile.php" class="nav-item nav-link">Profile</a>
                             <a href="database/logout.php" class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#myModalContact">Logout</a>
                         </div>

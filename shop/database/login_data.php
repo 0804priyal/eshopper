@@ -13,7 +13,7 @@ include("connection.php");
 			//print_r($data);exit;
 			$row=$data->fetch_assoc();
 			$_SESSION['id'] = $row['id'];
-			$_SESSION['fname']=$row['fname'];				
-			header("location: ../index.php?y=1");			
+			$_SESSION['firstname']=$row['firstname'];				
+			header("location: ../index.php");			
 		}
 ?>
