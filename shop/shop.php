@@ -1,5 +1,6 @@
 <?php 
 	include("header.php");
+
     if(isset($_GET['id'])) {
     $cat_id=$_GET['id'];
     $allshop="ALL SHOP";
@@ -231,9 +232,10 @@
                                     <h6>$<?php echo $offerprice; ?>.00</h6><h6 class="text-muted ml-2"><del>$<?php echo $productprice; ?>.00</del></h6>
                                 </div>
                             </div>
+
                             <div class="card-footer d-flex justify-content-between bg-light border">
                                 <a href="detail.php?id=<?php echo $product_id ;?>&cat_id=<?php echo $cat_id ;?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                <a href="database/insert_add_card.php?product_id=<?php echo $product_id; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>

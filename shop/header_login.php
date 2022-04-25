@@ -103,7 +103,41 @@ $result = $conn->query($sql);
     }   
     .pagination a:hover:not(.active) {   
         background-color: skyblue;   
-    }  
+    }
+    input, button {
+        height: 40px !important;
+    }
+    #login-row .rember_forgot input {
+        height: 10px !important;
+    }
+    .form-gap {
+        padding-top: 70px !important;
+    }
+    #login .container #login-row #login-column #login-box #login-form {
+        padding: 0px !important;
+    }
+    #login .container #login-row #login-column #login-box {
+        margin-top: 0px;
+        max-width: 100%;
+        height: auto;
+        padding: 30px 50px !important;
+        border: 1px solid #9C9C9C;
+        background-color: #EAEAEA;
+        margin-top: 20px;
+    }
+    #registration .container #login-row #login-column #login-box {
+        margin-top: 0px;
+        max-width: 100%;
+        height: auto;
+        padding: 30px 50px 30px 50px !important;
+        border: 1px solid #9C9C9C;
+        background-color: #EAEAEA;
+        margin-top: 20px;
+    }
+    .btn-lg, .btn-group-lg > .btn {
+        line-height: 1 !important;
+    }
+      
     </style>
 </head>
 
@@ -210,14 +244,9 @@ $result = $conn->query($sql);
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="shop.php" class="nav-item nav-link">Shop</a>                            
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.php" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.php" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
+                            <a href="shop.php" class="nav-item nav-link">Shop</a>
+                            <a href="add_card.php" class="nav-item nav-link">Shopping Cart</a>                            
+                            
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <?php

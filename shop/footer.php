@@ -130,6 +130,7 @@ if($result->num_rows>0) {
     }
   </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     
     <script src="lib/easing/easing.min.js"></script>
@@ -139,6 +140,8 @@ if($result->num_rows>0) {
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
     <script src="js/jquery.dynaprice.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/popup_effect.js"></script>
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script type="text/javascript"> 
@@ -164,7 +167,43 @@ if($result->num_rows>0) {
                 destination: $('span#basicPrice')
             });
             
-        });
+    });
+    function showHint(str) {
+      if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+          }
+        };
+        xmlhttp.open("GET", "email_data.php?q=" + str, true);
+        xmlhttp.send();
+      }
+    }
+
+    function checkPassword(form) {
+                password1 = form.passw.value;
+                password2 = form.passw2.value;
+                if (password1 == '')
+                    alert ("Please enter Password");
+                      
+                else if (password2 == '')
+                    alert ("Please enter confirm password");                     
+               
+                else if (password1 != password2) {
+                    alert ("\nPassword did not match: Please try again...")
+                    return false;
+                }
+  
+                // If same return True.
+                else{
+                    alert("Password Match: Welcome to GeeksforGeeks!")
+                    return true;
+                }
+            }
 </script>
 </body>
 

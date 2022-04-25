@@ -9585,3 +9585,9 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translateY(-15px);
   }
 }
+button.proceed_to_checkout {
+  padding: 50px 0px !important;
+}
+#login-row input, #login-row button {
+    height: 40px !important;
+}

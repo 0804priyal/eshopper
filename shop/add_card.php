@@ -1,6 +1,7 @@
 <?php 
 	include("header_card.php");
-    include("database/connection.php");
+    include("database/connection.php");   
+
 ?>
 
 		</div>
@@ -48,12 +49,12 @@
                             $productimg = $row['product_img'];
                             $offerprice = $row['price'];
                             $quantity = $row['quantity'];
-                            $total = $row['total'];                                          
+                            $total = $row['price'];                                          
                         	
                         ?>
                         <tr>
                             <td class="align-middle"><img src="../admin/bannerimg/<?php echo $productimg; ?>" alt="" style="width: 50px;"><?php echo $productname; ?></td>
-                            <td class="align-middle">$<?php echo $offerprice; ?></td>
+                            <td class="align-middle">$ <?php echo $offerprice; ?></td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                    
@@ -63,7 +64,7 @@
                                     
                                 </div>
                             </td>
-                            <td class="align-middle"><p class="form-control-static">$ <span id="card_id<?php echo $card_id; ?>"></span></p></td>
+                            <td class="align-middle">$ <?php echo $total; ?></span></p></td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <?php 
@@ -102,7 +103,7 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold">$160</h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-4">Proceed To Checkout</button>
+                        <a href="checkout.php" class="btn btn-block btn-primary my-3 proceed_to_checkout">Proceed To Checkout</a>
                     </div>
                 </div>
             </div>

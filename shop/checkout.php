@@ -1,5 +1,22 @@
 <?php 
 	include("header.php");
+    if(isset($_SESSION['id'])) {
+        $user_id = $_SESSION['id'];        
+        $sql = "SELECT * FROM registration WHERE id = $user_id";
+        $result = $conn->query($sql);
+        if ($result->num_rows>0) {
+            while ($row = $result->fetch_assoc()) {
+                $id = $row['id'];
+                $firstname = $row['firstname'];
+                $lname = $row['lname'];
+                $email = $row['email'];
+                $mobile = $row['mobile'];
+                $address1 = $row['address1'];
+                $address2 = $row['address2'];
+                $country = $row['country'];
+                $city = $row['city'];
+                $state = $row['state'];
+                $zipcode = $row['zipcode'];
 ?>
 		</div>
       </div>
@@ -14,48 +31,49 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John">
+                            <input class="form-control" type="text" name="firstname" value="<?php echo $firstname; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe">
+                            <input class="form-control" type="text" name="lname" value="<?php echo $lname; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
+                            <input class="form-control" type="email" name="email" value="<?php echo $email; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
+                            <input class="form-control" type="number" name="mobile" value="<?php echo $mobile; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 1</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
+                            <input class="form-control" type="text" name="address1" value="<?php echo $address1; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
+                            <input class="form-control" type="text" name="address2" value="<?php echo $address2; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Country</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
+                            <select class="custom-select" name="country">
+                                <option value="<?php echo $country; ?>" selected><?php echo $country; ?></option>
+                                <option value="United States">United States</option>
+                                <option value="Afghanistan">Afghanistan</option>
+                                <option value="Albania">Albania</option>
+                                <option value="Algeria">Algeria</option>
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
+                            <input class="form-control" type="text" name="city" value="<?php echo $city; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
+                            <input class="form-control" type="text" name="state" value="<?php echo $state; ?>">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
+                            <input class="form-control" type="text" name="zipcode" value="<?php echo $zipcode; ?>">
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="custom-control custom-checkbox">
@@ -71,6 +89,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>            
+                <?php 
+                    }
+                    }
+                    }
+                ?>
+                <?php 
+                    if(isset($_SESSION['id'])) {
+                        $user_id = $_SESSION['id'];        
+                        $sql = "SELECT * FROM shipping_address WHERE id = $user_id";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows>0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $id = $row['id'];
+                                $firstname = $row['firstname'];
+                                $lname = $row['lname'];
+                                $email = $row['email'];
+                                $mobile = $row['mobile'];
+                                $address1 = $row['address1'];
+                                $address2 = $row['address2'];
+                                $country = $row['country'];
+                                $city = $row['city'];
+                                $state = $row['state'];
+                                $zipcode = $row['zipcode'];
+                ?>
                 <div class="collapse mb-4" id="shipping-address">
                     <h4 class="font-weight-semi-bold mb-4">Shipping Address</h4>
                     <div class="row">
@@ -189,6 +234,11 @@
             </div>
         </div>
     </div>
+    <?php 
+        }
+        }
+        }
+    ?>
     <!-- Checkout End -->
 
 <?php
