@@ -1,0 +1,19 @@
+$user_id = $_SESSION['id'];
+    $sql="SELECT COUNT(*) FROM add_card WHERE user_id = $user_id";
+    $result=mysqli_query($conn,$sql);
+    $row=mysqli_fetch_array($result);
+    //echo "$row[0]";
+    $rowcount = $row[0];   
+   // echo $rowcount;
+
+
+Address - 
+Address dikhma
+new address
+Billing and shiping
+
+Check out par -- Address
+
+
+CheckOut- > Placeoder
+

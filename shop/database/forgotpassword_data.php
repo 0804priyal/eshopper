@@ -1,8 +1,8 @@
 <?php
 require("connection.php");
 //print_r($_POST);
-       function sendEmail($token){
-			$link = "<a href='http://localhost/shop/shop/confirmation.php?key=".$_POST['email']."&token=".$token."'>Click and Verify Email</a>";
+       function sendEmail($forgot_token){
+			$link = "<a href='http://localhost/shop/shop/confirmation_forgot_password.php?key=".$_POST['email']."&forgot_token=".$forgot_token."'>Click and Verify Email</a>";
 			$to = $_POST['email'];
 			$subject = 'Account confirmation link';
 			$from = 'eshopper@info.com';
@@ -25,13 +25,13 @@ require("connection.php");
 			// Sending email
 		mail($to, $subject, $message, $headers);
        }
-       $token = md5($_POST['email']).rand(10,9999);
-	$insertQuery = "INSERT INTO registration set firstname = '".$_POST['firstname']."', lname = '".$_POST['lname']."', email = '".$_POST['email']."', mobile = '".$_POST['mobile']."', address1 = '".$_POST['address1']."', address2 = '".$_POST['address2']."', country = '".$_POST['country']."', city = '".$_POST['city']."', state = '".$_POST['state']."', zipcode = '".$_POST['zipcode']."', passw = '".$_POST['passw']."', token ="."'".$token."'";
-
+       $forgot_token = md5($_POST['email']).rand(10,9999);
+	$insertQuery = "UPDATE registration set forgot_token ="."'".$forgot_token."' WHERE email = '".$_POST['email']."'";
+	
 	if ($conn->query($insertQuery) === TRUE) {
-		sendEmail($token);
+		sendEmail($forgot_token);
 		//echo "New record created successfully";
-		header("location: ../login.php?x=1");
+		header("location: ../forgot_password.php?x=1");
 		} else {
 		//echo "Error: " . $insertQuery . "<br>" . $conn->error;
 		header("location: ../registration.php?y=1");

@@ -1,11 +1,21 @@
 <?php
 session_start();
-// echo $_SESSION['id'];
-// exit();
+include("database/connection.php");
+/*Start User Row count of add to card */
+if(isset($_SESSION['id'])) {
+$user_id = $_SESSION['id'];
+$sql_1="SELECT COUNT(*) FROM add_card WHERE user_id = $user_id";
+    $result_1=mysqli_query($conn,$sql_1);
+    $row=mysqli_fetch_array($result_1);
+    //echo "$row[0]";
+    $rowcount = $row[0];
+}
+/*End User Row count of add to card */
+
 if(empty($_SESSION['id'])) {
     header("location: login.php?product_id=0");
 }
-include("database/connection.php");
+
 $sql = "Select * from dresses ORDER BY dress_id DESC";
 $result = $conn->query($sql);
 ?>
@@ -33,6 +43,7 @@ $result = $conn->query($sql);
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/popup_style.css">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/modal-popup.css" rel="stylesheet">
     <link href="css/profile.css" rel="stylesheet">
@@ -103,7 +114,17 @@ $result = $conn->query($sql);
     }   
     .pagination a:hover:not(.active) {   
         background-color: skyblue;   
-    }  
+    }
+    a.proceed_to_checkout {
+      padding: 20px 20px !important;
+      line-height: 0px !important;
+      height: 41px !important;
+    }
+    button {
+      padding: 20px 20px !important;
+      line-height: 0px !important;
+      height: 41px !important;
+    } 
     </style>
 </head>
 
@@ -163,10 +184,28 @@ $result = $conn->query($sql);
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
+                
+                <a class="btn border" id="display_popup" value="Display Popup">
+                    <i class="fas fa-shopping-cart text-primary"></i>                    
+                    <?php
+                    if(isset($_SESSION['id'])) {
+                    ?>
+                    <span class="badge"><?php echo $rowcount; ?></span>
+                    <?php
+                    }else {
+                    ?>
                     <span class="badge">0</span>
-                </a>
+                    <?php
+                    }
+                    ?>
+                 </a>
+                <div id="popup_box">
+                    <input type="button" id="close_button" value="Close">
+                    <p id="info_text">You have no items in your shopping cart.</p>
+                    
+                    <a href="checkout.php" class="btn btn-block btn-primary my-3 proceed_to_checkout">Proceed To Checkout</a>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -210,14 +249,9 @@ $result = $conn->query($sql);
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="shop.php" class="nav-item nav-link">Shop</a>                            
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.php" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.php" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
+                            <a href="shop.php" class="nav-item nav-link">Shop</a>
+                            <a href="add_card.php" class="nav-item nav-link">Shopping Cart</a>                         
+                            
                             <a href="contact.php" class="nav-item nav-link">Contact</a>
                         </div>
                         <?php

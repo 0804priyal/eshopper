@@ -4,6 +4,7 @@ include("connection.php");
                         if(isset($_GET['product_id'])) {
                             $product_id=$_GET['product_id'];
                             $user_id = $_SESSION['id'];
+
                             $sql = "SELECT * from products WHERE product_id = $product_id";
                             $result = $conn->query($sql);
                             
@@ -22,13 +23,19 @@ include("connection.php");
                             $information = $row['information'];
                             $quantity = 1;
 
-                            $insertQuery = "INSERT INTO add_card set user_id = '".$user_id."', product_name = '".$productname."', product_img = '".$productimg."', price = '".$offerprice."', quantity = '".$quantity."', total = '".$offerprice."'";
+                            $insertQuery = "INSERT INTO add_card set user_id = '".$user_id."', product_id = '".$product_id."', product_name = '".$productname."', product_img = '".$productimg."', price = '".$offerprice."', quantity = '".$quantity."', total = '".$offerprice."'";
                             
-                            $addCardValue = mysqli_query($conn, $insertQuery);
-                            if($addCardValue) {
-                            	header("location: ../add_card.php");
+                            $checkProductId = "SELECT * FROM `add_card` WHERE product_id='".$product_id."'";
+                            
+                            $addCardValue = mysqli_query($conn, $checkProductId);
+                            $rowcount = mysqli_num_rows($addCardValue);
+
+                            if($rowcount==0) {
+                              $q = mysqli_query($conn,$insertQuery);
+                            	header("location: ../add_card.php?x=recorinsert");
                             } else {
-                            	header("location: ../index.php?x=1");
+                              $insertQuery = "UPDATE add_card set user_id = '".$user_id."', product_name = '".$productname."', product_img = '".$productimg."', price = '".$offerprice."', quantity = '".$quantity."', total = '".$offerprice."' WHERE product_id = '".$product_id."'";
+                            	header("location: ../add_card.php?=recordupdated");
                             }                   
                         	}
                            }
